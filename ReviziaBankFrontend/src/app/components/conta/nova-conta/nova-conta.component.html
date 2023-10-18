@@ -1,0 +1,61 @@
+<div>
+  <mat-card *ngIf="!contaCriadaComSucesso">
+    <mat-card-header>
+      <mat-card-title>Criar nova conta</mat-card-title>
+    </mat-card-header>
+    <form (ngSubmit)="criarConta()" [formGroup]="contaForm">
+
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Titular</mat-label>
+          <input autocomplete="off" formControlName="titular" matInput name="titular">
+          <mat-error *ngIf="titular.invalid && (titular.dirty || titular.touched)">
+            {{getErrorMessage(titular)}}
+          </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+          <mat-label>Número da conta</mat-label>
+          <input autocomplete="off" formControlName="numeroDaConta" matInput name="numeroDaConta">
+          <mat-error *ngIf="numeroDaConta.invalid && (numeroDaConta.dirty || numeroDaConta.touched)">
+            {{getErrorMessage(numeroDaConta)}}
+          </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+          <mat-label>Saldo inicial</mat-label>
+          <input autocomplete="off" formControlName="saldo" matInput name="saldo">
+          <mat-error *ngIf="saldo.invalid && (saldo.dirty || saldo.touched)">
+            {{getErrorMessage(saldo)}}
+          </mat-error>
+        </mat-form-field>
+        <br/>
+      </mat-card-content>
+      <mat-card-actions>
+        <button [disabled]="contaForm.invalid" color="primary" mat-raised-button type="submit">Criar conta</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+  <mat-card *ngIf="contaCriadaComSucesso">
+    <mat-card-header>
+      <mat-card-title>Conta criada com sucesso</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Nome do titular: {{createdResource?.titular}}
+      </p>
+      <p>
+        Número da conta: {{createdResource?.numeroDaConta}}
+      </p>
+      <p>
+        Saldo: {{createdResource?.saldo}}
+      </p>
+      <p>
+        Clique no botão abaixo para acessar o recurso criado
+      </p>
+      <p>
+        <a mat-button color="primary" [routerLink]="['/extrato', createdResource?.numeroDaConta]">Acessar conta</a>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

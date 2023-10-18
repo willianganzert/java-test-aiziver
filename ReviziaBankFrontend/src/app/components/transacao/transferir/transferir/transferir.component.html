@@ -1,0 +1,66 @@
+<div>
+    <mat-card *ngIf="!transferenciaRealizadaComSucesso">
+        <mat-card-header>
+            <mat-card-title>Tranferencia de valores</mat-card-title>
+        </mat-card-header>
+        <form (ngSubmit)="transferir()" [formGroup]="transferenciaForm">
+
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-label>Conta Origem</mat-label>
+                    <input autocomplete="off" formControlName="contaOrigem" matInput name="contaOrigem">
+                    <mat-error *ngIf="contaOrigem.invalid && (contaOrigem.dirty || contaOrigem.touched)">
+                        {{getErrorMessage(contaOrigem)}}
+                    </mat-error>
+                </mat-form-field>
+                <br/>
+                <mat-form-field>
+                    <mat-label>Conta Destino</mat-label>
+                    <input autocomplete="off" formControlName="contaDestino" matInput name="contaDestino">
+                    <mat-error *ngIf="contaDestino.invalid && (contaDestino.dirty || contaDestino.touched)">
+                        {{getErrorMessage(contaDestino)}}
+                    </mat-error>
+                </mat-form-field>
+                <br/>
+                <mat-form-field>
+                    <mat-label>Valor da transferência</mat-label>
+                    <input autocomplete="off" formControlName="valor" matInput name="valor">
+                    <mat-error *ngIf="valor.invalid && (valor.dirty || valor.touched)">
+                        {{getErrorMessage(valor)}}
+                    </mat-error>
+                </mat-form-field>
+                <br/>
+                <mat-error *ngIf="contaOrigem.valid && contaDestino.valid && transferenciaForm.invalid && (transferenciaForm.dirty || transferenciaForm.touched)">
+                    <span *ngIf="transferenciaForm.errors && transferenciaForm.errors['sameConta']">
+                        Conta origem e conta destino não podem ser iguais
+                    </span>
+                </mat-error><br/>
+            </mat-card-content>
+            <mat-card-actions>
+                <button [disabled]="transferenciaForm.invalid" color="primary" mat-raised-button type="submit">Transferir Agora</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+    <mat-card *ngIf="transferenciaRealizadaComSucesso">
+        <mat-card-header>
+            <mat-card-title>Conta criada com sucesso</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Conta Origem: {{contaOrigem.getRawValue()}}
+            </p>
+            <p>
+                Conta destino: {{contaDestino.getRawValue()}}
+            </p>
+            <p>
+                Valor transferido: {{valor.getRawValue()}}
+            </p>
+            <p>
+                Clique no botão abaixo para acessar o recurso criado
+            </p>
+            <p>
+                <a mat-button color="primary" [routerLink]="['/contas']">Voltar para lista de contas</a>
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

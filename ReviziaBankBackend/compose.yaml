@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=reviziabank'
+      - 'POSTGRES_PASSWORD=reviziabank'
+      - 'POSTGRES_USER=reviziabank'
+    ports:
+      - "5432:5432"
+    restart: unless-stopped

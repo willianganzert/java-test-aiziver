@@ -1,0 +1,179 @@
+= Conta API
+
+Este documento contém uma documentação detalhada da API de Contas.
+
+== Listar Contas
+
+Retorna uma lista de todas as contas.
+
+=== Request
+include::{snippets}/listar-contas/http-request.adoc[]
+include::{snippets}/listar-contas/curl-request.adoc[]
+
+=== Responses
+
+[cols="1,1,3",options="header"]
+|===
+| Status | Hyperlink | Description
+| 200 | <<_lista_contas_success_200_ok>> | Conta encontrada. Os detalhes da conta são retornados no corpo da resposta.
+| 204 | <<_lista_contas_vazio_204>> | Lista de contas vazia. Não existem contas cadastradas.
+| 500 | <<_lista_contas_internal_server_error_500>> | Erro interno do servidor. Um erro inesperado ocorreu ao processar a solicitação.
+|===
+
+==== Lista Contas Success (200 OK)
+include::{snippets}/listar-contas/response-fields.adoc[]
+include::{snippets}/listar-contas/http-response.adoc[]
+
+==== Lista Contas Vazio (204)
+include::{snippets}/listar-contas-vazio/http-response.adoc[]
+
+==== Lista Contas Internal Server Error (500)
+include::{snippets}/listar-contas-servererror/response-fields.adoc[]
+include::{snippets}/listar-contas-servererror/http-response.adoc[]
+
+
+
+== Obter Conta
+
+Receber detalhes de uma conta específica.
+
+=== Request
+include::{snippets}/obter-conta-success/path-parameters.adoc[]
+include::{snippets}/obter-conta-success/http-request.adoc[]
+include::{snippets}/obter-conta-success/curl-request.adoc[]
+
+=== Responses
+
+[cols="1,1,3",options="header"]
+|===
+| Status | Hyperlink | Description
+| 200 | <<_obter_conta_success_200_ok>> | Conta encontrada. Os detalhes da conta são retornados no corpo da resposta.
+| 404 | <<_obter_conta_not_found_404>> | Conta não encontrada. Não existe conta com o ID fornecido.
+| 400 | <<_obter_conta_bad_request_400>> | Requisição inválida. O ID fornecido não é válido.
+| 500 | <<_obter_conta_internal_server_error_500>> | Erro interno do servidor. Um erro inesperado ocorreu ao processar a solicitação.
+|===
+
+==== Obter Conta Success (200 OK)
+include::{snippets}/obter-conta-success/response-fields.adoc[]
+include::{snippets}/obter-conta-success/http-response.adoc[]
+
+==== Obter Conta Not Found (404)
+include::{snippets}/obter-conta-notfound/response-fields.adoc[]
+include::{snippets}/obter-conta-notfound/http-response.adoc[]
+
+==== Obter Conta Bad Request (400)
+include::{snippets}/obter-conta-badrequest/response-fields.adoc[]
+include::{snippets}/obter-conta-badrequest/http-response.adoc[]
+
+==== Obter Conta Internal Server Error (500)
+include::{snippets}/obter-conta-servererror/response-fields.adoc[]
+include::{snippets}/obter-conta-servererror/http-response.adoc[]
+
+== Criar Conta
+
+Cria uma nova conta no sistema.
+
+=== Request
+include::{snippets}/criar-conta/request-fields.adoc[]
+include::{snippets}/criar-conta/http-request.adoc[]
+include::{snippets}/criar-conta/curl-request.adoc[]
+
+=== Responses
+
+[cols="1,1,3",options="header"]
+|===
+| Status | Hyperlink | Description
+| 200 | <<_criar_conta_success_201_ok>> | Conta criada com sucesso. Os detalhes da conta são retornados no corpo da resposta.
+| 409 | <<_criar_conta_conflict_409>> | Conflito. Já existe uma conta com esse número.
+| 400 | <<_criar_conta_bad_request_400>> | Requisição inválida. Campos obrigatórios podem estar faltando ou terem valor inválido.
+| 500 | <<_criar_conta_internal_server_error_500>> | Erro interno do servidor. Um erro inesperado ocorreu ao processar a solicitação.
+|===
+
+==== Criar Conta Success (201 OK)
+include::{snippets}/criar-conta/response-fields.adoc[]
+include::{snippets}/criar-conta/http-response.adoc[]
+
+==== Criar Conta Conflict (409)
+include::{snippets}/criar-conta-conflict/response-fields.adoc[]
+include::{snippets}/criar-conta-conflict/http-response.adoc[]
+
+==== Criar Conta Bad Request (400)
+include::{snippets}/criar-conta-badrequest/response-fields.adoc[]
+include::{snippets}/criar-conta-badrequest/http-response.adoc[]
+
+==== Criar Conta Internal Server Error (500)
+include::{snippets}/criar-conta-servererror/response-fields.adoc[]
+include::{snippets}/criar-conta-servererror/http-response.adoc[]
+
+== Atualizar Conta
+
+Atualiza os detalhes de uma conta específica.
+
+=== Request
+include::{snippets}/atualizar-conta/path-parameters.adoc[]
+include::{snippets}/atualizar-conta/request-fields.adoc[]
+include::{snippets}/atualizar-conta/http-request.adoc[]
+include::{snippets}/atualizar-conta/curl-request.adoc[]
+
+=== Responses
+
+[cols="1,1,3",options="header"]
+|===
+| Status | Hyperlink | Description
+| 200 | <<_atualizar_conta_success_200_ok>> | Conta atualizada com sucesso. Os detalhes atualizados da conta são retornados no corpo da resposta.
+| 400 | <<_atualizar_conta_bad_request_400>> | Requisição inválida. O ID fornecido ou os detalhes fornecidos são inválidos.
+| 404 | <<_atualizar_conta_not_found_404>> | Conta não encontrada. Não existe conta com o ID fornecido.
+| 500 | <<_atualizar_conta_internal_server_error_500>> | Erro interno do servidor. Um erro inesperado ocorreu ao processar a solicitação.
+|===
+
+==== Atualizar Conta Success (200 OK)
+include::{snippets}/atualizar-conta/response-fields.adoc[]
+include::{snippets}/atualizar-conta/http-response.adoc[]
+
+==== Atualizar Conta Bad Request (400)
+include::{snippets}/atualizar-conta-badrequest/response-fields.adoc[]
+include::{snippets}/atualizar-conta-badrequest/http-response.adoc[]
+
+==== Atualizar Conta Not Found (404)
+include::{snippets}/atualizar-conta-notfound/response-fields.adoc[]
+include::{snippets}/atualizar-conta-notfound/http-response.adoc[]
+
+==== Atualizar Conta Internal Server Error (500)
+include::{snippets}/atualizar-conta-servererror/response-fields.adoc[]
+include::{snippets}/atualizar-conta-servererror/http-response.adoc[]
+
+== Deletar Conta
+
+Remove uma conta específica.
+
+=== Request
+include::{snippets}/deletar-conta/path-parameters.adoc[]
+include::{snippets}/deletar-conta/http-request.adoc[]
+include::{snippets}/deletar-conta/curl-request.adoc[]
+
+=== Responses
+
+[cols="1,1,3",options="header"]
+|===
+| Status | Hyperlink | Description
+| 204 | <<_deletar_conta_success_204_no_content>> | Conta deletada com sucesso.
+| 400 | <<_deletar_conta_bad_request_400>> | Requisição inválida. O ID fornecido não é válido.
+| 404 | <<_deletar_conta_not_found_204_no_content>> | Conta não encontrada. Não existe conta com o ID fornecido.
+| 500 | <<_deletar_conta_internal_server_error_500>> | Erro interno do servidor. Um erro inesperado ocorreu ao processar a solicitação.
+|===
+
+==== Deletar Conta Success (204 No Content)
+include::{snippets}/deletar-conta-success/http-response.adoc[]
+
+==== Deletar Conta Bad Request (400)
+include::{snippets}/deletar-conta-badrequest/response-fields.adoc[]
+include::{snippets}/deletar-conta-badrequest/http-response.adoc[]
+
+==== Deletar Conta Not Found (204 No Content)
+include::{snippets}/deletar-conta-notfound/response-fields.adoc[]
+include::{snippets}/deletar-conta-notfound/http-response.adoc[]
+
+==== Deletar Conta Internal Server Error (500)
+include::{snippets}/deletar-conta-servererror/response-fields.adoc[]
+include::{snippets}/deletar-conta-servererror/http-response.adoc[]
+

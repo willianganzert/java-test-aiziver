@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span style="margin-right: 10px">Revizia Bank</span>
+  <button aria-label="Lista de contas" mat-button routerLink="/contas" routerLinkActive="active">
+    Listar Contas
+  </button>
+  <button aria-label="Criar nova conta" mat-button routerLink="/criar-nova-conta" routerLinkActive="active">
+    Nova Conta
+  </button>
+  <button aria-label="Transferir valores" mat-button routerLink="/trasferir-valores" routerLinkActive="active">
+    Transferir valores
+  </button>
+  <span class="spacer"></span>
+  <button (click)="logout()" aria-label="Sair" mat-button>
+    Sair
+  </button>
+</mat-toolbar>
+<router-outlet></router-outlet>

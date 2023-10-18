@@ -1,0 +1,9 @@
+= ReviziaBank API Documentation
+
+Welcome to the ReviziaBank API documentation.
+
+include::conta-api.adoc[]
+
+include::transacao-api.adoc[]
+
+
